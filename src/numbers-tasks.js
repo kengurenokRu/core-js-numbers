@@ -436,7 +436,12 @@ function getNumberValue(number) {
  * '5'      => false
  */
 function isNumber(number) {
-  return Number.isInteger(number);
+  console.log(typeof number);
+  console.log(number);
+  console.log(Number.isNaN(number));
+  console.log(Number.isFinite(number));
+  if (!Number.isFinite(number) || Number.isNaN(number)) return false;
+  return true;
 }
 
 /**
@@ -620,9 +625,9 @@ function getRandomInteger(min, max) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  const sum = a ** 2 / a + b ** 2 / a;
-  const c = Math.sqrt(sum * a);
-  return c;
+  if (a === Number.MAX_VALUE) return a;
+  if (b === Number.MAX_VALUE) return b;
+  return Math.sqrt(a ** 2 + b ** 2);
 }
 
 /**
