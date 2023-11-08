@@ -417,7 +417,7 @@ function toPrecision(number, precision) {
  * Number(-5)    => -5
  */
 function getNumberValue(number) {
-  return number;
+  return number.valueOf();
 }
 
 /**
@@ -465,7 +465,7 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  throw parseFloat(str);
+  return parseFloat(str);
 }
 
 /**
@@ -498,7 +498,7 @@ function getIntegerOnString(str, base) {
  * 2 ** 53  => false
  */
 function isSafeInteger(number) {
-  if (number < Number.MAX_SAFE_INTEGER) return true;
+  if (isInteger(number) && number < Number.MAX_SAFE_INTEGER) return true;
   return false;
 }
 
@@ -513,7 +513,7 @@ function isSafeInteger(number) {
  * -5.1 => -6
  */
 function roundToSmallestInteger(number) {
-  return Math.roundToSmallestInteger(number);
+  return Math.floor(number);
 }
 
 /**
@@ -527,7 +527,7 @@ function roundToSmallestInteger(number) {
  * -5.9 => -5
  */
 function roundToLargestInteger(number) {
-  return Math.roundToLargestInteger(number);
+  return Math.ceil(number);
 }
 
 /**
@@ -542,7 +542,7 @@ function roundToLargestInteger(number) {
  * -5.5 => -5
  */
 function roundToNearestInteger(number) {
-  return Math.roundToNearestInteger(number);
+  return Math.round(number);
 }
 
 /**
@@ -573,7 +573,8 @@ function getIntegerPartNumber(number) {
  * 0.1, 0.2, 0.3 => 0.6
  */
 function getSumOfNumbers(x1, x2, x3) {
-  return x1 + x2 + x3;
+  const sum = x1 * 10000 + x2 * 10000 + x3 * 10000;
+  return sum / 10000;
 }
 
 /**
@@ -619,7 +620,9 @@ function getRandomInteger(min, max) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  return Math.sqrt(a * a + b * b);
+  const sum = a ** 2 / a + b ** 2 / a;
+  const c = Math.sqrt(sum * a);
+  return c;
 }
 
 /**
