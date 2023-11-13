@@ -436,10 +436,6 @@ function getNumberValue(number) {
  * '5'      => false
  */
 function isNumber(number) {
-  console.log(typeof number);
-  console.log(number);
-  console.log(Number.isNaN(number));
-  console.log(Number.isFinite(number));
   if (!Number.isFinite(number) || Number.isNaN(number)) return false;
   return true;
 }
@@ -470,7 +466,7 @@ function isInteger(number) {
  * 'abcdefgh'      => NaN
  */
 function getFloatOnString(str) {
-  return parseFloat(str);
+  return Number.parseFloat(str);
 }
 
 /**
@@ -488,7 +484,7 @@ function getFloatOnString(str) {
  * '10', 8              => 8
  */
 function getIntegerOnString(str, base) {
-  return parseInt(str, base);
+  return Number.parseInt(str, base);
 }
 
 /**
@@ -503,8 +499,9 @@ function getIntegerOnString(str, base) {
  * 2 ** 53  => false
  */
 function isSafeInteger(number) {
-  if (isInteger(number) && number < Number.MAX_SAFE_INTEGER) return true;
-  return false;
+  // if (isInteger(number) && number < Number.MAX_SAFE_INTEGER) return true;
+  // return false;
+  return Number.isSafeInteger(number);
 }
 
 /**
@@ -625,9 +622,7 @@ function getRandomInteger(min, max) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  if (a === Number.MAX_VALUE) return a;
-  if (b === Number.MAX_VALUE) return b;
-  return Math.sqrt(a ** 2 + b ** 2);
+  return Math.hypot(a, b);
 }
 
 /**
