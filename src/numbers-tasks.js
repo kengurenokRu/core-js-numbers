@@ -607,7 +607,7 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -1, 1 => -1 | 0 | 1
  */
 function getRandomInteger(min, max) {
-  return max - (max - min) / 2;
+  return Math.round(max - (max - min) / 2 - 1);
 }
 
 /**
